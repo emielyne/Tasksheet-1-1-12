@@ -1,1 +1,111 @@
+/// java
+// Shape Interface
+public interface Shape {
+    double getArea();
+    double getPerimeter();
+}
 
+// AbstractShape abstract class
+public abstract class AbstractShape implements Shape {
+    @Override
+    public double getArea() {
+        return 0;
+    }
+  
+    @Override
+    public double getPerimeter() {
+        return 0;
+    }
+}
+
+// Circle class
+public class Circle extends AbstractShape {
+    private double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public double getArea() {
+        return Math.PI * Math.pow(radius, 2);
+    }
+
+    @Override
+    public double getPerimeter() {
+        return 2 * Math.PI * radius;
+    }
+}
+
+// Rectangle class
+public class Rectangle extends AbstractShape {
+    private double width;
+    private double height;
+
+    public Rectangle(double width, double height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    @Override
+    public double getArea() {
+        return width * height;
+    }
+
+    @Override
+    public double getPerimeter() {
+        return 2 * (width + height);
+    }
+}
+
+// Triangle class
+public class Triangle extends AbstractShape {
+    private double side1;
+    private double side2;
+    private double side3;
+
+    public Triangle(double side1, double side2, double side3) {
+        this.side1 = side1;
+        this.side2 = side2;
+        this.side3 = side3;
+    }
+
+    @Override
+    public double getArea() {
+        double semiPerimeter = getPerimeter() / 2;
+        return Math.sqrt(semiPerimeter * (semiPerimeter - side1) * (semiPerimeter - side2) * (semiPerimeter - side3));
+    }
+
+    @Override
+    public double getPerimeter() {
+        return side1 + side2 + side3;
+    }
+}
+
+// Main class for testing
+public class Main {
+    public static void main(String[] args) {
+        Circle circle = new Circle(5);
+        System.out.println("Circle Area: " + circle.getArea());
+        System.out.println("Circle Perimeter: " + circle.getPerimeter());
+
+        Rectangle rectangle = new Rectangle(4, 6);
+        System.out.println("Rectangle Area: " + rectangle.getArea());
+        System.out.println("Rectangle Perimeter: " + rectangle.getPerimeter());
+
+        Triangle triangle = new Triangle(3, 4, 5);
+        System.out.println("Triangle Area: " + triangle.getArea());
+        System.out.println("Triangle Perimeter: " + triangle.getPerimeter());
+    }
+}
+/// 
+
+Output:
+/// 
+Circle Area: 78.53981633974483
+Circle Perimeter: 31.41592653589793
+Rectangle Area: 24.0
+Rectangle Perimeter: 20.0
+Triangle Area: 6.0
+Triangle Perimeter: 12.0
+///
